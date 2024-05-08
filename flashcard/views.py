@@ -122,7 +122,7 @@ def desafio(request, id):
     desafio = Desafio.objects.get(id=id)
 
     acertos = desafio.flashcards.filter(respondido=True).filter(acertou=True).count()
-    erros = desafio.flashcards.filter(respondido=True).filter(acertou=True).count()
+    erros = desafio.flashcards.filter(respondido=True).filter(acertou=False).count()
     faltantes = desafio.flashcards.filter(respondido=False).count()
 
     if not desafio.user == request.user:
